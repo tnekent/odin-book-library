@@ -1,0 +1,46 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#book-table {
+    --outer-radius: 1rem;
+
+    max-width: 70vw;
+    margin: 0 auto;
+    background-color: hsl(201, 94%, 95%);
+    border: solid #334155;
+    border-width: 0 3px 3px 3px;
+    border-radius: 0 0 var(--outer-radius) var(--outer-radius);
+    font-family: Rubik, sans-serif;
+    font-size: 1.5rem;
+    border-spacing: 0;
+}
+
+#book-table caption {
+    padding: 1rem 1rem;
+    text-align: left;
+    background: linear-gradient(135deg, #38bdf8 0 80%, #0284c7 80% 90%, #0c4a6e 90% 100%);
+    border: solid #334155;
+    border-width: 3px;
+    border-radius: var(--outer-radius) var(--outer-radius) 0 0;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+#book-table tr *:nth-child(3) {
+    text-align: right;
+}
+
+#book-table tr > * {
+    --border: 2px solid hsla(215, 25%, 17%, 0.2);
+    border-top: var(--border);
+    padding: 1rem;
+}
+
+#book-table thead th {
+    text-align: left;
+    font-size: 1.3em;
+    border-top: none;
+}
