@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: Rubik, sans-serif;
+}
+
 #book-table {
     --outer-radius: 1rem;
 
@@ -13,7 +17,6 @@
     border: solid #334155;
     border-width: 0 3px 3px 3px;
     border-radius: 0 0 var(--outer-radius) var(--outer-radius);
-    font-family: Rubik, sans-serif;
     font-size: 1.5rem;
     border-spacing: 0;
 }
@@ -43,4 +46,31 @@
     text-align: left;
     font-size: 1.3em;
     border-top: none;
+}
+
+#add-book {
+    display: block;
+    background-color: hsl(198, 93%, 60%);
+    border: none;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    font-family: inherit;
+    padding-right: 1rem;
+    margin: 1rem auto;
+    cursor: pointer;
+    box-shadow: 0 2px 5px -3px rgba(0, 0, 0, 0.8);
+}
+
+#add-book::before {
+    content: "+";
+    vertical-align: middle;
+    display: inline-block;
+    background-color: hsl(198, 93%, 40%);
+    line-height: 1.2em;
+    width: 1.2em;
+    border-radius: 50%;
+    margin-right: 0.3em;
+    box-shadow: 1px 0 4px rgba(0, 0, 0, 0.2);
+    font-size: 2.3em;
+    font-family: sans-serif;
 }
