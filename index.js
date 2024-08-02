@@ -1,4 +1,5 @@
 const myLibrary = [];
+const bookTableBody = document.querySelector("#book-table > tbody");
 
 function Book(name, author, pageCount, hasRead) {
     this.name = name;
@@ -12,7 +13,7 @@ function addBookToLibrary(name, author, pageCount, hasRead) {
     myLibrary.push(book);
 }
 
-function displayBookToTable(book, table) {
+function displayBookToTable(book) {
     const bookRow = document.createElement("tr");
     const bookProps = Object.keys(book);
     for (let i = 0; i < bookProps.length; i++) {
@@ -20,13 +21,40 @@ function displayBookToTable(book, table) {
         bookCell.textContent = book[bookProps[i]];
         bookRow.appendChild(bookCell);
     }
-    table.appendChild(bookRow);
+    bookTableBody.appendChild(bookRow);
 }
 
 function displayLibraryToTable() {
     const bookTableBody = document.querySelector("#book-table > tbody");
-    myLibrary.forEach(book => displayBookToTable(book, bookTableBody));
+    myLibrary.forEach(displayBookToTable);
 }
+
+const addBookBtn = document.querySelector("#add-book");
+const addBookDlg = document.querySelector("dialog");
+addBookBtn.addEventListener("click", e => {
+    addBookDlg.showModal();
+})
+
+const confirmBtn = addBookDlg.querySelector("#confirm-btn");
+const addBookInputs = addBookDlg.querySelectorAll("input");
+
+confirmBtn.addEventListener("click", () => {
+    const inputValues = [];
+
+    addBookInputs.forEach(input => {
+        const inputValueProp =
+            input.type === "checkbox" ? 
+            "checked" : "value";
+        let inputValue = input[inputValueProp];
+
+        inputValues.push(inputValue);
+        input[inputValueProp] = null;
+    });
+
+    addBookToLibrary.apply(null, inputValues);
+    displayBookToTable(myLibrary[myLibrary.length - 1]);
+});
+
 
 function test() {
     addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180, false);
