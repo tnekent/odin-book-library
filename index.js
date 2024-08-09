@@ -5,7 +5,7 @@ function Book(name, author, pageCount, hasRead) {
     this.name = name;
     this.author = author;
     this.pageCount = pageCount;
-    this.hasRead = hasRead;
+    this.hasRead = hasRead ? "Have read" : "To read";
 }
 
 function addBookToLibrary(name, author, pageCount, hasRead) {
