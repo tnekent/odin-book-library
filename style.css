@@ -120,3 +120,23 @@ label span {
     border: 2px solid #334155;
     border-radius: 3px;
 }
+
+form button {
+    background-color: hsl(198, 93%, 64%);
+    border: 2px solid #334155;
+    border-radius: 1em;
+    padding: 0.4em 0.9em;
+    font-family: inherit;
+    font-weight: 470;
+    cursor: pointer;
+}
+
+#confirm-btn {
+    padding: 0.4em 1.7em;
+    margin-left: 0.4rem;
+}
+
+.form-btns {
+    margin-left: auto;
+    width: max-content;
+}
