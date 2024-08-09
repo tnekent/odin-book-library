@@ -37,13 +37,7 @@ addBookBtn.addEventListener("click", e => {
 
 const confirmBtn = addBookDlg.querySelector("#confirm-btn");
 const addBookInputs = addBookDlg.querySelectorAll("input");
-
-function resetInput(input) {
-    const inputValueProp =
-        input.type === "checkbox" ? 
-        "checked" : "value";
-    input[inputValueProp] = null;
-}
+const dialogForm = addBookDlg.querySelector("form");
 
 confirmBtn.addEventListener("click", () => {
     const inputValues = [];
@@ -55,17 +49,15 @@ confirmBtn.addEventListener("click", () => {
         let inputValue = input[inputValueProp];
 
         inputValues.push(inputValue);
-        resetInput(input);
     });
 
     addBookToLibrary.apply(null, inputValues);
     displayBookToTable(myLibrary[myLibrary.length - 1]);
+    dialogForm.reset();
 });
 
 const cancelBtn = addBookDlg.querySelector("#cancel-btn");
-cancelBtn.addEventListener("click", () => {
-    addBookInputs.forEach(resetInput);
-})
+cancelBtn.addEventListener("click", dialogForm.reset.bind(dialogForm));
 
 
 function test() {
