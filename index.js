@@ -13,6 +13,29 @@ function addBookToLibrary(name, author, pageCount, hasRead) {
     myLibrary.push(book);
 }
 
+function removeBook(e) {
+    const bookRow = e.currentTarget.parentNode.parentNode;
+    const bookRowIndex = Array.prototype.indexOf.call(bookTableBody.children, bookRow);
+    myLibrary.splice(bookRowIndex, 1);
+    bookTableBody.removeChild(bookRow);
+}
+
+function createRemoveCell() {
+    const rmvCell = document.createElement("td");
+    const rmvBtn = document.createElement("button");
+    const rmvIcon = document.createElement("span");
+    rmvIcon.classList.add("material-symbols-outlined");
+    rmvIcon.textContent = "delete";
+    rmvBtn.appendChild(rmvIcon);
+    rmvCell.appendChild(rmvBtn);
+    rmvCell.classList.add("rmv-cell");
+
+    rmvBtn.addEventListener("click", removeBook);
+
+    return rmvCell;
+}
+
+
 function displayBookToTable(book) {
     const bookRow = document.createElement("tr");
     const bookProps = Object.keys(book);
@@ -21,6 +44,7 @@ function displayBookToTable(book) {
         bookCell.textContent = book[bookProps[i]];
         bookRow.appendChild(bookCell);
     }
+    bookRow.appendChild(createRemoveCell());
     bookTableBody.appendChild(bookRow);
 }
 
@@ -58,7 +82,6 @@ confirmBtn.addEventListener("click", () => {
 
 const cancelBtn = addBookDlg.querySelector("#cancel-btn");
 cancelBtn.addEventListener("click", dialogForm.reset.bind(dialogForm));
-
 
 function test() {
     addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180, false);
