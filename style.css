@@ -51,7 +51,7 @@ body {
 #book-table tr > * {
     --border: 2px solid hsla(215, 25%, 17%, 0.2);
     border-top: var(--border);
-    padding: 1rem;
+    padding: 0.5em;
 }
 
 #book-table thead th {
@@ -147,10 +147,6 @@ form button {
 .form-btns {
     margin-left: auto;
     width: max-content;
-}
-
-#book-table td {
-    padding: 0.5em;
 }
 
 #book-table td button {
