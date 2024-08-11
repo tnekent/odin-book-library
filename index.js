@@ -8,6 +8,14 @@ function Book(name, author, pageCount, hasRead) {
     this.hasRead = hasRead ? "Have read" : "To read";
 }
 
+Book.prototype.toggleReadStatus = function() {
+    if (this.hasRead === "Have read") {
+        this.hasRead = "To read";
+    } else {
+        this.hasRead = "Have read";
+    }
+}
+
 function addBookToLibrary(name, author, pageCount, hasRead) {
     const book = new Book(name, author, pageCount, hasRead);
     myLibrary.push(book);
@@ -29,10 +37,46 @@ function createRemoveCell() {
     rmvBtn.appendChild(rmvIcon);
     rmvCell.appendChild(rmvBtn);
     rmvCell.classList.add("rmv-cell");
-
+    
     rmvBtn.addEventListener("click", removeBook);
-
+    
     return rmvCell;
+}
+
+function setToggleIndicator(toggleBtn, readState) {
+    const toggleIcon = toggleBtn.children[0];
+    if (readState === "Have read") {
+        toggleIcon.textContent = "cancel";
+        toggleBtn.className = "to-false";
+    } else {
+        toggleIcon.textContent = "check_circle";
+        toggleBtn.className = "to-true";
+    }
+}
+
+function toggleReadStatus(e) {
+    const bookRow = e.currentTarget.parentNode.parentNode;
+    const bookRowIndex = Array.prototype.indexOf.call(bookTableBody.children, bookRow);
+    const book = myLibrary[bookRowIndex];
+    book.toggleReadStatus();
+    setToggleIndicator(e.currentTarget, book.hasRead);
+    bookRow.children[3].textContent = book.hasRead;
+}
+
+function createToggleReadCell(initReadState) {
+    const toggleCell = document.createElement("td");
+    const toggleBtn = document.createElement("button");
+    const tglIcon = document.createElement("span");
+    tglIcon.classList.add("material-symbols-outlined");
+    tglIcon.textContent = "check_circle";
+    toggleBtn.appendChild(tglIcon);
+    setToggleIndicator(toggleBtn, initReadState);
+    toggleCell.appendChild(toggleBtn);
+    toggleCell.classList.add("tgl-cell");
+
+    toggleBtn.addEventListener("click", toggleReadStatus);
+
+    return toggleCell;
 }
 
 
@@ -44,6 +88,7 @@ function displayBookToTable(book) {
         bookCell.textContent = book[bookProps[i]];
         bookRow.appendChild(bookCell);
     }
+    bookRow.appendChild(createToggleReadCell(book.hasRead));
     bookRow.appendChild(createRemoveCell());
     bookTableBody.appendChild(bookRow);
 }

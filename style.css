@@ -149,23 +149,32 @@ form button {
     width: max-content;
 }
 
-#book-table td.rmv-cell {
+#book-table td {
     padding: 0.5em;
 }
 
-#book-table td.rmv-cell button {
+#book-table td button {
+    color: #E03B45;
     background: none;
     border: none;
     padding: 7px;
 }
 
-#book-table td.rmv-cell button:hover {
+#book-table td button:hover {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 3px;
 }
 
-#book-table td.rmv-cell span {
-    color: #E03B45;
+#book-table td span {
+    color: inherit;
     line-height: 100%;
     vertical-align: middle;
+}
+
+#book-table td button.to-false {
+    color: #FB5151;
+}
+
+#book-table td button.to-true {
+    color: #16a34a;
 }
