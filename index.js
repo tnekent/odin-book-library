@@ -28,6 +28,9 @@ function removeBook(e) {
   const bookRowIndex = Array.prototype.indexOf.call(bookTableBody.children, bookRow);
   myLibrary.splice(bookRowIndex, 1);
   bookTableBody.removeChild(bookRow);
+  if (myLibrary.length < 1) {
+    displayEmptyPlaceholderRow();
+  }
 }
 
 function createRemoveCell() {
@@ -81,6 +84,14 @@ function createToggleReadCell(initReadState) {
   return toggleCell;
 }
 
+function displayEmptyPlaceholderRow() {
+  const row = document.createElement("tr");
+  const cell = document.createElement("td");
+  cell.textContent = "No book entries. Add using the button below.";
+  cell.colSpan = 4;
+  row.appendChild(cell);
+  bookTableBody.appendChild(row);
+}
 
 function displayBookToTable(book) {
   const bookRow = document.createElement("tr");
@@ -96,8 +107,11 @@ function displayBookToTable(book) {
 }
 
 function displayLibraryToTable() {
-  const bookTableBody = document.querySelector("#book-table > tbody");
-  myLibrary.forEach(displayBookToTable);
+  if (myLibrary.length < 1) {
+    displayEmptyPlaceholderRow();
+  } else {
+    myLibrary.forEach(displayBookToTable);
+  }
 }
 
 const addBookBtn = document.querySelector("#add-book");
