@@ -8,6 +8,8 @@
 
 body {
   font-family: Rubik, sans-serif;
+
+  --edge-padding: 1.4rem;
 }
 
 ::backdrop {
@@ -44,6 +46,8 @@ body {
   border-radius: var(--outer-radius) var(--outer-radius) 0 0;
   font-size: 1.5em;
   font-weight: 500;
+  padding-left: var(--edge-padding);
+  padding-right: var(--edge-padding);
 }
 
 #book-table tr *:nth-child(3) {
@@ -54,6 +58,14 @@ body {
   --border: 2px solid hsla(215, 25%, 17%, 0.2);
   border-top: var(--border);
   padding: 0.5em;
+}
+
+#book-table tr>*:first-child {
+  padding-left: var(--edge-padding);
+}
+
+#book-table tr>*:last-child {
+  padding-right: var(--edge-padding);
 }
 
 #book-table thead th {
