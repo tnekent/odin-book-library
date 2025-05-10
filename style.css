@@ -1,177 +1,179 @@
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Rubik, sans-serif;
+  font-family: Rubik, sans-serif;
 }
 
 ::backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .material-symbols-outlined {
   font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
 }
 
 #book-table {
-    --outer-radius: 1rem;
+  --outer-radius: 1rem;
 
-    max-width: 70vw;
-    margin: 0 auto;
-    background-color: hsl(201, 94%, 95%);
-    border: solid #334155;
-    border-width: 0 3px 3px 3px;
-    border-radius: 0 0 var(--outer-radius) var(--outer-radius);
-    font-size: 1.5rem;
-    border-spacing: 0;
+  max-width: 70vw;
+  margin: 0 auto;
+  background-color: hsl(201, 94%, 95%);
+  border: solid #334155;
+  border-width: 0 3px 3px 3px;
+  border-radius: 0 0 var(--outer-radius) var(--outer-radius);
+  font-size: 1.5rem;
+  border-spacing: 0;
 }
 
 #book-table caption {
-    padding: 1rem 1rem;
-    text-align: left;
-    background: linear-gradient(135deg, #38bdf8 0 80%, #0284c7 80% 90%, #0c4a6e 90% 100%);
-    border: solid #334155;
-    border-width: 3px;
-    border-radius: var(--outer-radius) var(--outer-radius) 0 0;
-    font-size: 1.5em;
-    font-weight: 500;
+  padding: 1rem 1rem;
+  text-align: left;
+  background: linear-gradient(135deg, #38bdf8 0 80%, #0284c7 80% 90%, #0c4a6e 90% 100%);
+  border: solid #334155;
+  border-width: 3px;
+  border-radius: var(--outer-radius) var(--outer-radius) 0 0;
+  font-size: 1.5em;
+  font-weight: 500;
 }
 
 #book-table tr *:nth-child(3) {
-    text-align: right;
+  text-align: right;
 }
 
-#book-table tr > * {
-    --border: 2px solid hsla(215, 25%, 17%, 0.2);
-    border-top: var(--border);
-    padding: 0.5em;
+#book-table tr>* {
+  --border: 2px solid hsla(215, 25%, 17%, 0.2);
+  border-top: var(--border);
+  padding: 0.5em;
 }
 
 #book-table thead th {
-    text-align: left;
-    font-size: 1.3em;
-    border-top: none;
+  text-align: left;
+  font-size: 1.3em;
+  border-top: none;
 }
 
 #add-book {
-    display: block;
-    background-color: hsl(198, 93%, 60%);
-    border: none;
-    border-radius: 2rem;
-    font-size: 1.5rem;
-    font-family: inherit;
-    padding-right: 1rem;
-    margin: 1rem auto;
-    cursor: pointer;
-    box-shadow: 0 2px 5px -3px rgba(0, 0, 0, 0.8);
+  display: block;
+  background-color: hsl(198, 93%, 60%);
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  font-family: inherit;
+  padding-right: 1rem;
+  margin: 1rem auto;
+  cursor: pointer;
+  box-shadow: 0 2px 5px -3px rgba(0, 0, 0, 0.8);
 }
 
 #add-book::before {
-    content: "+";
-    vertical-align: middle;
-    display: inline-block;
-    background-color: hsl(198, 93%, 40%);
-    line-height: 1.2em;
-    width: 1.2em;
-    border-radius: 50%;
-    margin-right: 0.3em;
-    box-shadow: 1px 0 4px rgba(0, 0, 0, 0.2);
-    font-size: 2.3em;
-    font-family: sans-serif;
+  content: "+";
+  vertical-align: middle;
+  display: inline-block;
+  background-color: hsl(198, 93%, 40%);
+  line-height: 1.2em;
+  width: 1.2em;
+  border-radius: 50%;
+  margin-right: 0.3em;
+  box-shadow: 1px 0 4px rgba(0, 0, 0, 0.2);
+  font-size: 2.3em;
+  font-family: sans-serif;
 }
 
 dialog {
-    margin: auto;
-    padding: 1.5rem;
-    border: none;
-    background-color: hsl(201, 94%, 95%);
-    border: 3px solid #334155;
-    border-radius: 12px;
+  margin: auto;
+  padding: 1.5rem;
+  border: none;
+  background-color: hsl(201, 94%, 95%);
+  border: 3px solid #334155;
+  border-radius: 12px;
 }
 
 dialog label {
-    display: block;
-    height: 2.3rem;
+  display: block;
+  height: 2.3rem;
 }
 
 label span {
-    display: inline-block;
-    width: 18ch;
+  display: inline-block;
+  width: 18ch;
 }
 
 #title-i,
 #author-i,
 #pages-i {
-    padding: 0.3em 0.5em;
-    border: 2px solid #334155;
-    border-radius: 5px;
-    width: 23ch;
+  padding: 0.3em 0.5em;
+  border: 2px solid #334155;
+  border-radius: 5px;
+  width: 23ch;
 }
 
 #title-i:focus,
 #author-i:focus,
 #pages-i:focus {
-    outline: none;
-    border-color: #38bdf8;
+  outline: none;
+  border-color: #38bdf8;
 }
 
 #read-i {
-    width: 1.2em;
-    height: 1.2em;
-    border: 2px solid #334155;
-    border-radius: 3px;
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid #334155;
+  border-radius: 3px;
 }
 
 form button {
-    background-color: hsl(198, 93%, 64%);
-    border: 2px solid #334155;
-    border-radius: 1em;
-    padding: 0.4em 0.9em;
-    font-family: inherit;
-    font-weight: 470;
-    cursor: pointer;
+  background-color: hsl(198, 93%, 64%);
+  border: 2px solid #334155;
+  border-radius: 1em;
+  padding: 0.4em 0.9em;
+  font-family: inherit;
+  font-weight: 470;
+  cursor: pointer;
 }
 
 #confirm-btn {
-    padding: 0.4em 1.7em;
-    margin-left: 0.4rem;
+  padding: 0.4em 1.7em;
+  margin-left: 0.4rem;
 }
 
 .form-btns {
-    margin-left: auto;
-    width: max-content;
+  margin-left: auto;
+  width: max-content;
 }
 
 #book-table td button {
-    color: #E03B45;
-    background: none;
-    border: none;
-    padding: 7px;
+  color: #E03B45;
+  background: none;
+  border: none;
+  padding: 7px;
 }
 
 #book-table td button:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
 }
 
 #book-table td span {
-    font-size: 2.7em;
-    color: inherit;
-    line-height: 100%;
-    vertical-align: middle;
+  font-size: 2.7em;
+  color: inherit;
+  line-height: 100%;
+  vertical-align: middle;
 }
 
 #book-table td button.to-false {
-    color: #FB5151;
+  color: #FB5151;
 }
 
 #book-table td button.to-true {
-    color: #16a34a;
+  color: #16a34a;
 }
