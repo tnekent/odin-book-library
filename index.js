@@ -133,19 +133,60 @@ const pagesInput = addBookDlg.querySelector("#pages-i");
 const readInput = addBookDlg.querySelector("#read-i");
 const dialogForm = addBookDlg.querySelector("form");
 
-confirmBtn.addEventListener("click", () => {
+function validateInputs() {
+  const titleInvalid = titleInput.validity.valueMissing;
+  const authorInvalid = authorInput.validity.valueMissing;
+  const pagesInvalid = pagesInput.validity.valueMissing;
+
+  if (titleInvalid) {
+    titleInput.setCustomValidity("The title must be filled.");
+  } else {
+    titleInput.setCustomValidity("");
+  }
+
+  if (authorInvalid) {
+    authorInput.setCustomValidity("The author name must be filled.");
+  } else {
+    authorInput.setCustomValidity("");
+  }
+
+  if (pagesInvalid) {
+    pagesInput.setCustomValidity("The number of pages must be filled.");
+  } else {
+    pagesInput.setCustomValidity("");
+  }
+
+  return !titleInvalid && !authorInvalid && !pagesInvalid;
+}
+
+[titleInput, authorInput, pagesInput].forEach((input) => {
+  input.addEventListener("input", function () {
+    this.setCustomValidity("");
+  });
+});
+
+confirmBtn.addEventListener("click", (e) => {
+  if (!validateInputs()) return;
+
   const title = titleInput.value;
   const author = authorInput.value;
   const pageCount = pagesInput.value;
-  const hasRead = readInput.value;
+  const hasRead = readInput.checked;
+
+  console.log(title, author, pageCount, hasRead);
 
   addBookToLibrary(title, author, pageCount, hasRead);
   displayBookToTable(myLibrary[myLibrary.length - 1]);
   dialogForm.reset();
+  addBookDlg.close();
 });
 
 const cancelBtn = addBookDlg.querySelector("#cancel-btn");
-cancelBtn.addEventListener("click", dialogForm.reset.bind(dialogForm));
+cancelBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  dialogForm.reset();
+  addBookDlg.close();
+});
 
 function test() {
   addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180, false);
