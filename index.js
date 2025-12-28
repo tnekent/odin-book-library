@@ -25,7 +25,10 @@ function addBookToLibrary(name, author, pageCount, hasRead) {
 
 function removeBook(e) {
   const bookRow = e.currentTarget.parentNode.parentNode;
-  const bookRowIndex = Array.prototype.indexOf.call(bookTableBody.children, bookRow);
+  const bookRowIndex = Array.prototype.indexOf.call(
+    bookTableBody.children,
+    bookRow,
+  );
   myLibrary.splice(bookRowIndex, 1);
   bookTableBody.removeChild(bookRow);
   if (myLibrary.length < 1) {
@@ -61,7 +64,10 @@ function setToggleIndicator(toggleBtn, readState) {
 
 function toggleReadStatus(e) {
   const bookRow = e.currentTarget.parentNode.parentNode;
-  const bookRowIndex = Array.prototype.indexOf.call(bookTableBody.children, bookRow);
+  const bookRowIndex = Array.prototype.indexOf.call(
+    bookTableBody.children,
+    bookRow,
+  );
   const book = myLibrary[bookRowIndex];
   book.toggleReadStatus();
   setToggleIndicator(e.currentTarget, book.hasRead);
@@ -116,27 +122,24 @@ function displayLibraryToTable() {
 
 const addBookBtn = document.querySelector("#add-book");
 const addBookDlg = document.querySelector("dialog");
-addBookBtn.addEventListener("click", e => {
+addBookBtn.addEventListener("click", (e) => {
   addBookDlg.showModal();
-})
+});
 
 const confirmBtn = addBookDlg.querySelector("#confirm-btn");
-const addBookInputs = addBookDlg.querySelectorAll("input");
+const titleInput = addBookDlg.querySelector("#title-i");
+const authorInput = addBookDlg.querySelector("#author-i");
+const pagesInput = addBookDlg.querySelector("#pages-i");
+const readInput = addBookDlg.querySelector("#read-i");
 const dialogForm = addBookDlg.querySelector("form");
 
 confirmBtn.addEventListener("click", () => {
-  const inputValues = [];
+  const title = titleInput.value;
+  const author = authorInput.value;
+  const pageCount = pagesInput.value;
+  const hasRead = readInput.value;
 
-  addBookInputs.forEach(input => {
-    const inputValueProp =
-      input.type === "checkbox" ?
-        "checked" : "value";
-    let inputValue = input[inputValueProp];
-
-    inputValues.push(inputValue);
-  });
-
-  addBookToLibrary.apply(null, inputValues);
+  addBookToLibrary(title, author, pageCount, hasRead);
   displayBookToTable(myLibrary[myLibrary.length - 1]);
   dialogForm.reset();
 });
